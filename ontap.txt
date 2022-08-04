@@ -1,0 +1,16 @@
+OBJECT - CLASS
+1. Object
+	- tập hợp n các value phức tạp
+	- là 1 vật thể, thứ gì đó, ... mà có những đặc điểm hành vi
+	- là những thứ ta có thể đếm, mô tả và phân biệt được
+2. Class
+	- sự phân nhóm, tên gọi cho 1 nhóm các đối tượng theo một tiêu chí nào đó
+	- khuôn đúc đối tượng
+	- chứa đặc điểm, hành vi chung của các object
+	- phễu/ Constructor/ Hàm khởi tạo:
+		+ Là method đặc biệt, dùng để khởi tạo object
+		+ Mỗi lần gọi sẽ tạo ra 1 constructor mới
+		+ Không có value trả về, ko có void
+		+ Tên Constructor phải giống với tên class
+		+ Gọi thông qua từ khóa new
+		+ lớp con gọi sẽ thông qua supper()

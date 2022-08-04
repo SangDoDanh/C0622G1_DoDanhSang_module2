@@ -11,19 +11,11 @@ public class SumDiagonalTwoArr {
     }
 
     static double sumDiagonal(double[][] twoArr) {
-        double resultLeft = 0;
-        double resultRight = 0;
+        double result = 0;
         for(int i = 0; i < twoArr.length; i++) {
-            for (int j = 0; j < twoArr[i].length; j++) {
-                if(i == j) {
-                    resultLeft += twoArr[i][j];
-                }
-                if(j == i * -1 + 2){
-                    resultRight += twoArr[i][j];
-                }
-            }
+            result += twoArr[i][i];
         }
-        return resultRight + resultLeft;
+        return result;
     }
     static double[][] createTwoArr(int m, int n) {
         Scanner sc = new Scanner(System.in);
@@ -47,8 +39,8 @@ public class SumDiagonalTwoArr {
     }
 
     static void displayTwoArr(double[][] twoArr) {
-        for (int i = 0; i < twoArr.length; i++) {
-            displayArr(twoArr[i]);
+        for (double[] doubles : twoArr) {
+            displayArr(doubles);
             System.out.println("");
         }
     }

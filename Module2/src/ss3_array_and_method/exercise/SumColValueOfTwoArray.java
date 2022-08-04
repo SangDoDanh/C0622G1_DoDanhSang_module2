@@ -9,7 +9,7 @@ public class SumColValueOfTwoArray {
         double[][] twoArr = createTwoArr(3, 2);
         displayTwoArr(twoArr);
         System.out.println("Enter col want to sum: ");
-        int col = sc.nextInt();
+        int col = Integer.parseInt(sc.nextLine());
         while (col > twoArr.length || col < 1) {
             System.out.println("Enter col again: ");
             col = sc.nextInt();
@@ -46,8 +46,8 @@ public class SumColValueOfTwoArray {
     }
 
     static void displayTwoArr(double[][] twoArr) {
-        for (int i = 0; i < twoArr.length; i++) {
-            displayArr(twoArr[i]);
+        for (double[] doubles : twoArr) {
+            displayArr(doubles);
             System.out.println("");
         }
     }
