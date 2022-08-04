@@ -12,7 +12,7 @@ public class SumColValueOfTwoArray {
         int col = Integer.parseInt(sc.nextLine());
         while (col > twoArr.length || col < 1) {
             System.out.println("Enter col again: ");
-            col = sc.nextInt();
+            col = Integer.parseInt(sc.nextLine());
         }
         System.out.println("Sum: " + sumCol(twoArr, col));
     }
@@ -32,7 +32,7 @@ public class SumColValueOfTwoArray {
             double[] newArr = new double[n];
             for (int j = 0; j < n; j++) {
                 System.out.println("Array[" + i + "][" + j + "]: ");
-                newArr[j] = sc.nextDouble();
+                newArr[j] = Double.parseDouble(sc.nextLine());
             }
             newTowArr[i] = newArr;
         }

@@ -47,7 +47,7 @@ public class MaxTwoArray {
             double[] newArr = new double[n];
             for(int j = 0; j < n; j ++) {
                 System.out.println("Array[" + i+ "]["+j+"]: ");
-                newArr[j] = sc.nextDouble();
+                newArr[j] = Double.parseDouble(sc.nextLine());
             }
             newTowArr[i] = newArr;
         }
@@ -59,8 +59,8 @@ public class MaxTwoArray {
         }
     }
     static void displayTwoArr(double[][] twoArr) {
-        for(int i = 0; i < twoArr.length; i++) {
-            displayArr(twoArr[i]);
+        for (double[] doubles : twoArr) {
+            displayArr(doubles);
             System.out.println("");
         }
     }

@@ -25,7 +25,7 @@ public class SumDiagonalTwoArr {
             double[] newArr = new double[n];
             for (int j = 0; j < n; j++) {
                 System.out.println("Array[" + i + "][" + j + "]: ");
-                newArr[j] = sc.nextDouble();
+                newArr[j] = Double.parseDouble(sc.nextLine());
             }
             newTowArr[i] = newArr;
         }

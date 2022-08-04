@@ -10,9 +10,9 @@ public class Shape {
     static void printRect() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Width: ");
-        int width = sc.nextInt();
+        int width = Integer.parseInt(sc.nextLine());
         System.out.print("\nHeight: ");
-        int height = sc.nextInt();
+        int height = Integer.parseInt(sc.nextLine());
 
         for (int i = 1; i <= height; i++) {
             for (int j = 1; j <= width; j++) {
@@ -47,7 +47,7 @@ public class Shape {
         Scanner sc = new Scanner(System.in);
 
         System.out.print("Height triangle:");
-        int heightTriangle = sc.nextInt();
+        int heightTriangle = Integer.parseInt(sc.nextLine());
 
         for (int i = 1; i < heightTriangle; i++) {
             for (int j = 1; j <= i * -1 + heightTriangle; j++) {

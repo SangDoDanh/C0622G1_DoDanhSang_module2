@@ -14,7 +14,7 @@ public class CountCharacterToWords {
     static int countCharacter(String words, char c) {
         int count = 0;
         for(int i = 0; i < words.length(); i++) {
-            if(Character.compare(words.charAt(i), c) == 0) {
+            if(words.charAt(i) == c) {
                 count ++;
             }
         }
