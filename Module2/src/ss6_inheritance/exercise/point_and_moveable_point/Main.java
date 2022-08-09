@@ -9,5 +9,8 @@ public class Main {
         // move speed xSpeed = 1, ySpeed = 1
         pointMove = pointMove.move();
         System.out.println(pointMove.toString());
+        // move again
+        pointMove = pointMove.move();
+        System.out.println(pointMove);
     }
 }
