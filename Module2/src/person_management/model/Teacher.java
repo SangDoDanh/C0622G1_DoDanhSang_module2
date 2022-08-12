@@ -21,7 +21,7 @@ public class Teacher extends Person{
 
     @Override
     public String toString() {
-        return String.format("|%6d|%-15s|%-10s|%-5s|%-7s|4.2f|",
+        return String.format("|%6d|%-15s|%-10s|%-6s|%-7s|",
                 this.getId(), this.getName(), this.getDateOfBirth(), this.getGender(),best);
     }
 }

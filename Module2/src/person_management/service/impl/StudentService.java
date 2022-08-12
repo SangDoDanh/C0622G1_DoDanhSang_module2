@@ -12,8 +12,8 @@ public class StudentService implements IStudentService {
     private static final List<Student> students = new ArrayList<>();
 
     static {
-        students.add(new Student(1, "A", "1/1/1996", "nam", "CO6",0.0));
-        students.add(new Student(2, "B", "1/1/1998", "nu", "CO6",0.0));
+        students.add(new Student(1, "A", "1/1/1996", "nam", "CO6", 0.0));
+        students.add(new Student(2, "B", "1/1/1998", "nu", "CO6", 0.0));
     }
 
     @Override
@@ -26,8 +26,9 @@ public class StudentService implements IStudentService {
 
     @Override
     public void showStudentList() {
+        System.out.println("--DANH SÁCH HỌC SINH--");
         System.out.printf("|%-6s|%-15s|%-10s|%-5s|%-7s|%-5s|\n",
-                "ID", "NAME", "DOB", "GENDER","CLASS", "POINT");
+                "ID", "NAME", "DOB", "GENDER", "CLASS", "POINT");
         for (Student student : students) {
             System.out.println(student);
         }
@@ -42,10 +43,10 @@ public class StudentService implements IStudentService {
         int id = Integer.parseInt(sc.nextLine());
         int studentIndex = indexOf(id);
 
-        if(studentIndex > -1) {
-            System.out.println("Chọn 1 để xóa học sinh có id = " + id);
+        if (studentIndex > -1) {
+            System.out.printf("Nhập 1 sẽ xóa học sinh có id = %d: ", id);
             int conform = Integer.parseInt(sc.nextLine());
-            if(conform == 1) {
+            if (conform == 1) {
                 students.remove(studentIndex);
                 System.out.println("Xóa thành công!");
                 showStudentList();
@@ -54,13 +55,14 @@ public class StudentService implements IStudentService {
     }
 
     private int indexOf(int id) {
-        for(int i = 0; i < students.size(); i++) {
-            if(students.get(i).getId() == id){
+        for (int i = 0; i < students.size(); i++) {
+            if (students.get(i).getId() == id) {
                 return i;
             }
         }
         return -1;
     }
+
     private Student inputStudentInfo() {
         int id;
         String name;

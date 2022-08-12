@@ -6,6 +6,7 @@ public class MyArrayList<E> {
     private int size = 0;
     private final static int DEFAULT_CAPACITY = 10;
     private Object[] elements;
+
     public MyArrayList() {
         elements = new Object[DEFAULT_CAPACITY];
     }
@@ -20,6 +21,7 @@ public class MyArrayList<E> {
 
     /**
      * Lấy ra số lượng phần tử có trong myArrayList
+     *
      * @return int : số lượng phần tử
      */
     public int size() {
@@ -38,6 +40,7 @@ public class MyArrayList<E> {
 
     /**
      * Thêm một phần tử vào cuối myArrayList
+     *
      * @param e
      */
     public boolean add(E e) {
@@ -51,7 +54,8 @@ public class MyArrayList<E> {
 
     /**
      * Thêm một phần tử vào myArrayList ở vị trí xác định
-     * @param e : phần tử thêm vào
+     *
+     * @param e     : phần tử thêm vào
      * @param index : vị trí muốn thêm
      */
     public void add(E e, int index) {
@@ -59,18 +63,19 @@ public class MyArrayList<E> {
             throw new IllegalArgumentException("index: " + index);
         } else if (elements.length == size) {
             ensureCapacity(5);
-        } else {
-            for (int i = size; i > index; i--) {
-                elements[i] = elements[i - 1];
-            }
-            elements[index] = e;
-            size++;
         }
+        for (int i = size; i > index; i--) {
+            elements[i] = elements[i - 1];
+        }
+        elements[index] = e;
+        size++;
+
     }
 
     /**
      * tìm kiếm phần tử trong myArrayList nếu có trả về vị
      * trí đầu tiên tìm thấy, ngược lại trả về -1
+     *
      * @param e phần tử muốn tìm
      * @return vị trí tìm thấy
      */
@@ -86,6 +91,7 @@ public class MyArrayList<E> {
     /**
      * kiểm tra có phần tử trong mản không, nếu có
      * trả về true ngược lại trả về false
+     *
      * @param e
      * @return true or flase
      */
@@ -95,6 +101,7 @@ public class MyArrayList<E> {
 
     /**
      * tạo một bản sao của myArrayList
+     *
      * @return bản sao của myArraList
      */
     public MyArrayList<E> clone() {
@@ -106,6 +113,7 @@ public class MyArrayList<E> {
 
     /**
      * tăng kích thước của myArrayList
+     *
      * @param capacity kích thước tăng lên
      */
     private void ensureCapacity(int capacity) {
@@ -119,6 +127,7 @@ public class MyArrayList<E> {
 
     /**
      * Xóa một phần tử khỏi myArrayList, dựa trên vị trí của phần tử đó
+     *
      * @param index vị trí phần tử
      * @return phần tử bị xóa
      */
@@ -139,6 +148,7 @@ public class MyArrayList<E> {
     /**
      * lấy ra phần tử, dựa vào vị trí của
      * phần tử ở trong myAaaryList
+     *
      * @param index vị trí phần tử
      * @return phần tử tương ứng với vị trí truyền vào
      */

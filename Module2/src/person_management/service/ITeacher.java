@@ -1,4 +1,9 @@
 package person_management.service;
 
-public interface ITeacher {
+public interface ITeacher{
+    void add();
+
+    void remove();
+
+    void display();
 }
