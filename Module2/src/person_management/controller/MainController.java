@@ -21,10 +21,10 @@ public class MainController {
             choise = Integer.parseInt(sc.nextLine());
             switch (choise) {
                 case 1:
-                    runStudent();
+                    studentMenu();
                     break;
                 case 2:
-                    runTeacher();
+                    teacherMenu();
                     break;
                 case 3:
                     return;
@@ -38,7 +38,7 @@ public class MainController {
     /**
      * Chương trình quản lý học sinh
      */
-    public void runStudent() {
+    public void studentMenu() {
         while (true) {
             menuOption("học sinh");
             System.out.print("Chọn chức năng: ");
@@ -64,7 +64,7 @@ public class MainController {
     /**
      * Chương trình quản lý giáo viên
      */
-    public void runTeacher() {
+    public void teacherMenu() {
         while (true) {
             menuOption("giáo viên");
             System.out.print("Chọn chức năng: ");
@@ -87,7 +87,7 @@ public class MainController {
         }
 
     }
-    public void showMenu() {
+    private void showMenu() {
         System.out.println("--CHƯƠNG TRÌNH QUẢN LÝ GIÁO VIÊN VÀ HỌC SINH--");
         System.out.println("1. Chương trình quản lý học sinh");
         System.out.println("2. Chương trình quản lý giáo viên");
@@ -95,7 +95,7 @@ public class MainController {
         System.out.print("Chọn chức năng: ");
     }
 
-    public void menuOption(String option) {
+    private void menuOption(String option) {
         System.out.println("--CHƯƠNG TRÌNH QUẢN LÝ "+option.toUpperCase()+"--");
         System.out.println("1. Thêm mới " + option);
         System.out.println("2. Xóa một " + option);
