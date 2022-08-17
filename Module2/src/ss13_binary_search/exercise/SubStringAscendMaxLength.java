@@ -30,7 +30,7 @@ public class SubStringAscendMaxLength {
                     strSub += str.charAt(j);
                     i = j;
                 } else {
-                    i = j;
+                    i = j-1;
                     break;
                 }
 
