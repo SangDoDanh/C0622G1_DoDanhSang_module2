@@ -1,5 +1,7 @@
 package person_management.service.impl;
 
+import person_management.model.Person;
+import person_management.model.Student;
 import person_management.model.Teacher;
 import person_management.service.ITeacher;
 
@@ -23,6 +25,42 @@ public class TeacherService implements ITeacher {
         Teacher teacher = createTeacher();
         teachers.add(teacher);
         System.out.println("Thêm mới giáo viên thành công!");
+    }
+
+    public void findById() {
+        int id;
+        int findStudentIndex;
+
+        System.out.println("Nhập id của giáo viên cần tìm:");
+        id = Integer.parseInt(sc.nextLine());
+        findStudentIndex = indexOf(id);
+        if(findStudentIndex > -1) {
+            System.out.println(teachers.get(findStudentIndex));
+        } else {
+            System.out.println("Không tìm thấy giáo viên nào!");
+        }
+    }
+    public void findByName() {
+        String nameFind;
+        System.out.println("Nhập tên giáo viên cần tìm:");
+        nameFind = sc.nextLine();
+        List<Person> personListByName = new ArrayList<>();
+        for(Teacher teacher : teachers) {
+            if(teacher.getName().contentEquals(nameFind)) {
+                personListByName.add(teacher);
+            }
+        }
+        if(personListByName.size() < 1) {
+            System.out.println("Không tìm thấy học sinh nào!");
+        } else {
+            System.out.println("--DANH SÁCH GIÁO VIÊN TÌM ĐƯỢC--");
+            System.out.printf("|%-6s|%-15s|%-10s|%-5s|%-7s|%-5s|\n",
+                    "ID", "NAME", "DOB", "GENDER", "CLASS", "POINT");
+            for (Person person : personListByName) {
+                System.out.println(person);
+            }
+        }
+
     }
 
     /**

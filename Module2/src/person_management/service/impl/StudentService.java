@@ -1,5 +1,6 @@
 package person_management.service.impl;
 
+import person_management.model.Person;
 import person_management.model.Student;
 import person_management.service.IStudentService;
 
@@ -51,6 +52,45 @@ public class StudentService implements IStudentService {
                 System.out.println("Xóa thành công!");
                 showStudentList();
             }
+        }
+    }
+
+    @Override
+    public void findByName() {
+        String nameFind;
+        System.out.println("Nhập tên học sinh cần tìm:");
+        nameFind = sc.nextLine();
+        List<Person> personListByName = new ArrayList<>();
+        for(Student student : students) {
+            if(student.getName().contentEquals(nameFind)) {
+                personListByName.add(student);
+            }
+        }
+        if(personListByName.size() < 1) {
+            System.out.println("Không tìm thấy học sinh nào!");
+        } else {
+            System.out.println("--DANH SÁCH HỌC SINH TÌM ĐƯỢC--");
+            System.out.printf("|%-6s|%-15s|%-10s|%-5s|%-7s|%-5s|\n",
+                    "ID", "NAME", "DOB", "GENDER", "CLASS", "POINT");
+            for (Person person : personListByName) {
+                System.out.println(person);
+            }
+        }
+
+    }
+
+    @Override
+    public void findById() {
+        int id;
+        int findStudentIndex;
+
+        System.out.println("Nhập id của học sinh cần tìm:");
+        id = Integer.parseInt(sc.nextLine());
+         findStudentIndex = indexOf(id);
+        if(findStudentIndex > -1) {
+            System.out.println(students.get(findStudentIndex));
+        } else {
+            System.out.println("Không tìm thấy học sinh nào!");
         }
     }
 

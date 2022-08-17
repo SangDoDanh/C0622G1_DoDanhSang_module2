@@ -54,6 +54,12 @@ public class MainController {
                     iStudentService.showStudentList();
                     break;
                 case 4:
+                    iStudentService.findByName();
+                    break;
+                case 5:
+                    iStudentService.findById();
+                    break;
+                case 6:
                     return;
                 default:
                     System.out.println("Vui lòng chọn chức năng từ 1...4 !");
@@ -80,6 +86,12 @@ public class MainController {
                     iTeacher.display();
                     break;
                 case 4:
+                    iTeacher.findByName();
+                    break;
+                case 5:
+                    iTeacher.findById();
+                    break;
+                case 6:
                     return;
                 default:
                     System.out.println("Vui lòng chọn chức năng từ 1...4 !");
@@ -100,6 +112,8 @@ public class MainController {
         System.out.println("1. Thêm mới " + option);
         System.out.println("2. Xóa một " + option);
         System.out.println("3. Xem danh sách " + option);
-        System.out.println("4. Thoát");
+        System.out.println("4. Tìm kiếm theo tên " + option);
+        System.out.println("5. Tìm kiếm theo id " + option);
+        System.out.println("6. Thoát");
     }
 }

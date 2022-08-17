@@ -6,4 +6,8 @@ public interface ITeacher{
     void remove();
 
     void display();
+
+    void findByName();
+
+    void findById();
 }
