@@ -15,6 +15,10 @@ public class TeacherService implements ITeacher {
     static {
         teachers.add(new Teacher(1, "Quang", "12/12/2022", "Nam", "JAVA"));
         teachers.add(new Teacher(2, "Hue", "12/12/2022", "NU", "SQL"));
+        teachers.add(new Teacher(3, "Hong", "12/12/2022", "NU", "SQL"));
+        teachers.add(new Teacher(4, "Tu", "12/12/2022", "NU", "Python"));
+        teachers.add(new Teacher(5, "Sang", "12/12/2022", "NU", "SQL"));
+        teachers.add(new Teacher(6, "Trung", "12/12/2022", "NU", "SQL"));
     }
 
     /**
@@ -43,30 +47,44 @@ public class TeacherService implements ITeacher {
 
     @Override
     public void sortByName() {
-        for(int i = 0; i < teachers.size() - 1; i++) {
-            for(int j = i + 1; j < teachers.size(); j++) {
-                if(teachers.get(j).getName().compareTo(teachers.get(i).getName()) == 1) {
-                    Teacher teacher = teachers.get(i);
-                    teachers.set(i, teachers.get(j));
-                    teachers.set(j, teacher);
+        boolean isSwap = true;
+        int size = teachers.size();
+        String s1;
+        String s2;
+        for (int i = 0; i < size && isSwap; i++) {
+            isSwap = false;
+            for (int j = 0; j < size - 1 - i; j++) {
+                s1 = teachers.get(j).getName().toLowerCase();
+                s2 = teachers.get(j + 1).getName().toLowerCase();
+                if (s1.compareTo(s2) > 0) {
+                    isSwap = true;
+                    Teacher teacher = teachers.get(j);
+                    teachers.set(j, teachers.get(j + 1));
+                    teachers.set(j + 1, teacher);
                 }
             }
         }
-
+        display();
     }
 
+    /**
+     * Tìm kiếm các và hiển thị các giáo viên có tên chứa từ khóa tìm kiếm
+     * ví dụ: Có 3 giáo viên là Hoa, Hồng, Tuấn
+     * từ khóa tìm kiếm là : H
+     * sẽ hiển thị thông tin của 2 giáo viên Hoa và hồng
+     */
     public void findByName() {
         String nameFind;
         System.out.println("Nhập tên giáo viên cần tìm:");
         nameFind = sc.nextLine();
         List<Person> personListByName = new ArrayList<>();
         for(Teacher teacher : teachers) {
-            if(teacher.getName().contentEquals(nameFind)) {
+            if(teacher.getName().contains(nameFind)) {
                 personListByName.add(teacher);
             }
         }
         if(personListByName.size() < 1) {
-            System.out.println("Không tìm thấy học sinh nào!");
+            System.out.println("Không tìm thấy giáo viên nào!");
         } else {
             System.out.println("--DANH SÁCH GIÁO VIÊN TÌM ĐƯỢC--");
             System.out.printf("|%-6s|%-15s|%-10s|%-5s|%-7s|%-5s|\n",
@@ -129,11 +147,11 @@ public class TeacherService implements ITeacher {
         String dob;
         String best;
         String gender;
-        System.out.println("Nhập vào các thông tin sau");
+        System.out.println("Nhập vào các thông tin sau cho giáo viên.");
         System.out.print("Mã số:");
         id = Integer.parseInt(sc.nextLine());
 
-        System.out.print("\nTên học sinh:");
+        System.out.print("\nTên:");
         name = sc.nextLine();
 
         System.out.print("\nNgày sinh:");
