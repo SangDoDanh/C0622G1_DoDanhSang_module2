@@ -40,6 +40,21 @@ public class TeacherService implements ITeacher {
             System.out.println("Không tìm thấy giáo viên nào!");
         }
     }
+
+    @Override
+    public void sortByName() {
+        for(int i = 0; i < teachers.size() - 1; i++) {
+            for(int j = i + 1; j < teachers.size(); j++) {
+                if(teachers.get(j).getName().compareTo(teachers.get(i).getName()) == 1) {
+                    Teacher teacher = teachers.get(i);
+                    teachers.set(i, teachers.get(j));
+                    teachers.set(j, teacher);
+                }
+            }
+        }
+
+    }
+
     public void findByName() {
         String nameFind;
         System.out.println("Nhập tên giáo viên cần tìm:");

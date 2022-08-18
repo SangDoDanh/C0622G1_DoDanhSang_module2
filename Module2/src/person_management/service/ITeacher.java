@@ -10,4 +10,6 @@ public interface ITeacher{
     void findByName();
 
     void findById();
+
+    void sortByName();
 }

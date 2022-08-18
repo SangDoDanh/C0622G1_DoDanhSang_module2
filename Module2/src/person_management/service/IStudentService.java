@@ -10,4 +10,6 @@ public interface IStudentService {
     void findByName();
 
     void findById();
+
+    void sortByName();
 }

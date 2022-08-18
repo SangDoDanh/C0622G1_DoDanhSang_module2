@@ -94,6 +94,20 @@ public class StudentService implements IStudentService {
         }
     }
 
+    @Override
+    public void sortByName() {
+        for(int i = 0; i < students.size() - 1; i++) {
+            for(int j = i + 1; j < students.size(); j++) {
+                if(students.get(j).getName().compareTo(students.get(i).getName()) == 1) {
+                    Student student = students.get(i);
+                    students.set(i, students.get(j));
+                    students.set(j, student);
+                }
+            }
+        }
+        showStudentList();
+    }
+
     private int indexOf(int id) {
         for (int i = 0; i < students.size(); i++) {
             if (students.get(i).getId() == id) {
