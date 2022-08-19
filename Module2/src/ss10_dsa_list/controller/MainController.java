@@ -1,7 +1,7 @@
-package ss_10_dsa_list.controller;
+package ss10_dsa_list.controller;
 
-import ss_10_dsa_list.model.MyArrayList;
-import ss_10_dsa_list.model.Student;
+import ss10_dsa_list.model.MyArrayList;
+import ss10_dsa_list.model.Student;
 
 public class MainController {
     public static void main(String[] args) {
