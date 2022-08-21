@@ -11,6 +11,7 @@ import java.util.Scanner;
 public class StudentService implements IStudentService {
     private static final Scanner sc = new Scanner(System.in);
     private static final List<Student> students = new ArrayList<>();
+    private static final String[] GENDER = {"Male", "FMale", "Other"};
 
     static {
         students.add(new Student(1, "A", "1/1/1996", "nam", "CO6", 0.0));
@@ -57,6 +58,7 @@ public class StudentService implements IStudentService {
             }
         }
     }
+
     /**
      * Tìm kiếm các và hiển thị các giáo viên có tên chứa từ khóa tìm kiếm
      * ví dụ: Có 3 học sinh là Hoa, Hồng, Tuấn
@@ -87,6 +89,10 @@ public class StudentService implements IStudentService {
 
     }
 
+    /**
+     * Tìm kiếm và hiển thị một học sinh tìm thấy
+     * tìm kiếm dựa theo id của học sinh
+     */
     @Override
     public void findById() {
         int id;
@@ -101,6 +107,10 @@ public class StudentService implements IStudentService {
         }
     }
 
+    /**
+     * Tìm kiếm học sinh theo tên
+     * Hiển thị tất cả học sinh tìm được
+     */
     @Override
     public void sortByName() {
         boolean isSwap = true;
@@ -123,6 +133,11 @@ public class StudentService implements IStudentService {
         showStudentList();
     }
 
+    /**
+     * Tìm kiếm vị trí của học sinh trong students theo id của
+     * @param id mã số của học sinh cần tìm
+     * @return vị trí , trả về -1 nếu ko tìm thấy
+     */
     private int indexOf(int id) {
         for (int i = 0; i < students.size(); i++) {
             if (students.get(i).getId() == id) {
@@ -132,6 +147,10 @@ public class StudentService implements IStudentService {
         return -1;
     }
 
+    /**
+     * Nhập thông tin cho học sinh
+     * @return học sinh mới
+     */
     private Student inputStudentInfo() {
         int id;
         String name;
@@ -139,20 +158,44 @@ public class StudentService implements IStudentService {
         String className;
         String gender;
         System.out.println("Nhập vào các thông tin sau");
-        System.out.print("Mã số:");
-        id = Integer.parseInt(sc.nextLine());
-
-        System.out.print("\nTên học sinh:");
-        name = sc.nextLine();
-
-        System.out.print("\nNgày sinh:");
-        dob = sc.nextLine();
-
-        System.out.print("\nGiới tính");
-        gender = sc.nextLine();
-
-        System.out.print("\nLớp:");
-        className = sc.nextLine();
+        id = getIdAndCheck();
+        name = InputService.getStr("Tên học sinh: ");
+        dob = InputService.getDate("Ngày sinh dd/mm/yyyy:");
+        gender = InputService.getStr("Giới tính: ");
+        className = InputService.getStr("Lớp");
         return new Student(id, name, dob, gender, className, 0.0);
+    }
+
+    /**
+     * Nhập một mã số mới, và kiểm tra nó đã tồn tại chưa,
+     * nếu tồn tại yêu cầu nhập lại
+     * mã số từ 01 -> 99999
+     * @return mã số mới
+     */
+    private int getIdAndCheck() {
+        int id;
+        while (true) {
+            id = InputService.getNumberInteger("Mã số: ", 1, 99999);
+            if (checkID(id)) {
+                break;
+            }else {
+                System.out.println(id + ": đã tồn tại");
+            }
+        }
+        return id;
+
+    }
+
+    /**
+     * Kiểm tra mã số học sinh đã tồn tại chưa
+     * @param id mã số của sinh viên
+     * @return false: id đã tồn tại
+     */
+    private boolean checkID(int id) {
+        for (Student student: students) {
+            if(student.getId() == id)
+                return false;
+        }
+        return true;
     }
 }

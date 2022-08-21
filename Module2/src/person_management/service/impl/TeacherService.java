@@ -1,7 +1,6 @@
 package person_management.service.impl;
 
 import person_management.model.Person;
-import person_management.model.Student;
 import person_management.model.Teacher;
 import person_management.service.ITeacher;
 
@@ -148,20 +147,44 @@ public class TeacherService implements ITeacher {
         String best;
         String gender;
         System.out.println("Nhập vào các thông tin sau cho giáo viên.");
-        System.out.print("Mã số:");
-        id = Integer.parseInt(sc.nextLine());
-
-        System.out.print("\nTên:");
-        name = sc.nextLine();
-
-        System.out.print("\nNgày sinh:");
-        dob = sc.nextLine();
-
-        System.out.print("\nGiới tính");
-        gender = sc.nextLine();
-
-        System.out.print("\nChuyên môn:");
-        best = sc.nextLine();
+        id = getIdAndCheck();
+        name = InputService.getStr("Tên học sinh: ");
+        dob = InputService.getDate("Ngày sinh dd/mm/yyyy:");
+        gender = InputService.getStr("Giới tính: ");
+        best = InputService.getStr("Best");
         return new Teacher(id, name, dob, gender, best);
+    }
+
+    /**
+     * Nhập một mã số mới cho giáo viên , và kiểm tra nó đã tồn tại chưa,
+     * nếu tồn tại yêu cầu nhập lại
+     * mã số từ 01 -> 99999
+     * @return mã số mới
+     */
+    private int getIdAndCheck() {
+        int id;
+        while (true) {
+            id = InputService.getNumberInteger("Mã số: ", 1, 99999);
+            if (checkID(id)) {
+                break;
+            }else {
+                System.out.println(id + ": đã tồn tại");
+            }
+        }
+        return id;
+
+    }
+
+    /**
+     * Kiểm tra mã số giáo viên đã tồn tại chưa
+     * @param id mã số của giáo viên
+     * @return false: nếu id đã tồn tại
+     */
+    private boolean checkID(int id) {
+        for (Teacher teacher: teachers) {
+            if(teacher.getId() == id)
+                return false;
+        }
+        return true;
     }
 }
