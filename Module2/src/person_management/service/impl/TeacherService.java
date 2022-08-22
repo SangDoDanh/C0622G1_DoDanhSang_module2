@@ -1,23 +1,69 @@
 package person_management.service.impl;
 
 import person_management.model.Person;
+import person_management.model.Student;
 import person_management.model.Teacher;
 import person_management.service.ITeacher;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class TeacherService implements ITeacher {
     private static final Scanner sc = new Scanner(System.in);
-    private static final List<Teacher> teachers = new ArrayList<>();
-    static {
-        teachers.add(new Teacher(1, "Quang", "12/12/2022", "Nam", "JAVA"));
-        teachers.add(new Teacher(2, "Hue", "12/12/2022", "NU", "SQL"));
-        teachers.add(new Teacher(3, "Hong", "12/12/2022", "NU", "SQL"));
-        teachers.add(new Teacher(4, "Tu", "12/12/2022", "NU", "Python"));
-        teachers.add(new Teacher(5, "Sang", "12/12/2022", "NU", "SQL"));
-        teachers.add(new Teacher(6, "Trung", "12/12/2022", "NU", "SQL"));
+    private static final String PATH_TEACHER = "Module2/src/person_management/service/data/teacher.txt";
+    private static  List<Teacher> teachers = readFile(PATH_TEACHER);
+
+    private static List<Teacher> readFile(String path) {
+        File fileStudent = new File(path);
+        List<Teacher> teacherList = new ArrayList<>();
+        try {
+            FileReader fileReader = new FileReader(fileStudent);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] studentsString = line.split(",");
+                Teacher teacher = new Teacher();
+
+                teacher.setId(Integer.parseInt(studentsString[0]));
+                teacher.setName(studentsString[1]);
+                teacher.setDateOfBirth(studentsString[2]);
+                teacher.setGender(studentsString[3]);
+                teacher.setBest(studentsString[4]);
+                teacherList.add(teacher);
+            }
+            bufferedReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("Đường dẫn bị lỗi!");
+        } catch (IOException e) {
+            System.out.println("Khong co du lieu!");
+        }
+        return teacherList;
+    }
+
+    private void write(String path) {
+        File file = new File(path);
+        try{
+            FileWriter fileWriter = new FileWriter(file);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            String line;
+            for(Teacher teacher: teachers) {
+                line = String.format("%s,%s,%s,%s,%s,",
+                        teacher.getId(),
+                        teacher.getName(),
+                        teacher.getDateOfBirth(),
+                        teacher.getGender(),
+                        teacher.getBest());
+                bufferedWriter.write(line);
+                bufferedWriter.newLine();
+            }
+            bufferedWriter.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("Ko tim thay file student");
+        } catch (IOException e)  {
+            System.out.println("ko co noi dung!");
+        }
     }
 
     /**
@@ -26,14 +72,16 @@ public class TeacherService implements ITeacher {
     @Override
     public void add() {
         Teacher teacher = createTeacher();
+        teachers = readFile(PATH_TEACHER);
         teachers.add(teacher);
+        write(PATH_TEACHER);
         System.out.println("Thêm mới giáo viên thành công!");
     }
 
     public void findById() {
         int id;
         int findStudentIndex;
-
+        teachers = readFile(PATH_TEACHER);
         System.out.println("Nhập id của giáo viên cần tìm:");
         id = Integer.parseInt(sc.nextLine());
         findStudentIndex = indexOf(id);
@@ -47,6 +95,7 @@ public class TeacherService implements ITeacher {
     @Override
     public void sortByName() {
         boolean isSwap = true;
+        teachers = readFile(PATH_TEACHER);
         int size = teachers.size();
         String s1;
         String s2;
@@ -74,6 +123,7 @@ public class TeacherService implements ITeacher {
      */
     public void findByName() {
         String nameFind;
+        teachers = readFile(PATH_TEACHER);
         System.out.println("Nhập tên giáo viên cần tìm:");
         nameFind = sc.nextLine();
         List<Person> personListByName = new ArrayList<>();
@@ -103,12 +153,13 @@ public class TeacherService implements ITeacher {
         System.out.print("Nhập id muốn xóa: \n");
         int id = Integer.parseInt(sc.nextLine());
         int teacherIndex = indexOf(id);
-
+        teachers = readFile(PATH_TEACHER);
         if (teacherIndex > -1) {
             System.out.printf("Nhập 1 sẽ xóa giáo viên có id = %d: ", id);
             int conform = Integer.parseInt(sc.nextLine());
             if (conform == 1) {
                 teachers.remove(teacherIndex);
+                write(PATH_TEACHER);
                 System.out.println("Xóa thành công!");
                 display();
             }
@@ -120,6 +171,7 @@ public class TeacherService implements ITeacher {
      */
     @Override
     public void display() {
+        teachers = readFile(PATH_TEACHER);
         System.out.println("--DANH SÁCH GIÁO VIÊN--");
         System.out.printf("|%-6s|%-15s|%-10s|%-6s|%-7s|\n",
                 "ID", "NAME", "DOB", "GENDER", "BEST");
