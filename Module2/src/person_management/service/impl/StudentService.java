@@ -25,14 +25,13 @@ public class StudentService implements IStudentService {
         } else {
             for(String s : studentListString) {
                 String[] studentString = s.split(",");
-                Student student = new Student();
-                student.setId(Integer.parseInt(studentString[0]));
-                student.setName(studentString[1]);
-                student.setDateOfBirth(studentString[2]);
-                student.setGender(studentString[3]);
-                student.setClassName(studentString[4]);
-                student.setPoint(Double.parseDouble(studentString[5]));
-                studentList.add(student);
+                studentList.add(new Student(
+                        Integer.parseInt(studentString[0]),
+                        studentString[1],
+                        studentString[2],
+                        studentString[3],
+                        studentString[4],
+                        Double.parseDouble(studentString[5])));
             }
         }
 

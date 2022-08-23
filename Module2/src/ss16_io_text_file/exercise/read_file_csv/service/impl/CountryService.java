@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CountryService implements ICountryService {
-    private final String PATH_COUNTRY = "Module2/src/ss16_io_text_file/exercise/read_file_csv/data/country.csv";
+    private final String PATH_COUNTRY = "Module2/src/ss16_io_text_file/exercise/read_file_csv/service/data/country.csv";
     private static List<Country> countryList;
 
     /**
@@ -33,10 +33,7 @@ public class CountryService implements ICountryService {
         String[] propertyOfCountry;
         for(String c : countryString) {
             propertyOfCountry = c.split(",");
-            Country country = new Country();
-            country.setId(propertyOfCountry[1]);
-            country.setName(propertyOfCountry[2]);
-            countryList.add(country);
+            countryList.add(new Country(propertyOfCountry[1], propertyOfCountry[2]));
         }
         return countryList;
     }

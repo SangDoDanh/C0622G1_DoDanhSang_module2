@@ -21,13 +21,11 @@ public class TeacherService implements ITeacher {
         String[] propertyOfTeacherString;
         for (String t : teachersString) {
             propertyOfTeacherString = t.split(",");
-            Teacher teacher = new Teacher();
-            teacher.setId(Integer.parseInt(propertyOfTeacherString[0]));
-            teacher.setName(propertyOfTeacherString[1]);
-            teacher.setDateOfBirth(propertyOfTeacherString[2]);
-            teacher.setGender(propertyOfTeacherString[3]);
-            teacher.setBest(propertyOfTeacherString[4]);
-            teacherList.add(teacher);
+            teacherList.add(new Teacher(Integer.parseInt(propertyOfTeacherString[0]),
+                    propertyOfTeacherString[1],
+                    propertyOfTeacherString[2],
+                    propertyOfTeacherString[3],
+                    propertyOfTeacherString[4]));
         }
         return teacherList;
     }
