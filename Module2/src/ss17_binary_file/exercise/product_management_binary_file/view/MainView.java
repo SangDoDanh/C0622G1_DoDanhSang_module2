@@ -1,6 +1,6 @@
-package ss17_binary_file.view;
+package ss17_binary_file.exercise.product_management_binary_file.view;
 
-import ss17_binary_file.controller.ProductController;
+import ss17_binary_file.exercise.product_management_binary_file.controller.ProductController;
 
 public class MainView {
     public static void main(String[] args) {

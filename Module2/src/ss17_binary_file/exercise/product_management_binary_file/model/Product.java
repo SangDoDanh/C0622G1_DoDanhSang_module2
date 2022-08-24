@@ -1,4 +1,4 @@
-package ss17_binary_file.model;
+package ss17_binary_file.exercise.product_management_binary_file.model;
 
 import java.io.Serializable;
 

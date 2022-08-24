@@ -54,7 +54,7 @@ public class InputService {
             try{
                 System.out.println(mes);
                 result = Integer.parseInt(sc.nextLine());
-                if(result >= min || result <= max) {
+                if(result >= min && result <= max) {
                     break;
                 }
             } catch (NumberFormatException e) {
@@ -75,7 +75,7 @@ public class InputService {
             try{
                 System.out.println(mes);
                 result = Double.parseDouble(sc.nextLine());
-                if(result >= min || result <= max) {
+                if(result >= min && result <= max) {
                     break;
                 }
             } catch (NumberFormatException e) {

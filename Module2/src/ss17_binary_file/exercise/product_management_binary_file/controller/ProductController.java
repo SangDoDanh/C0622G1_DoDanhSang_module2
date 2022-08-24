@@ -1,7 +1,7 @@
-package ss17_binary_file.controller;
+package ss17_binary_file.exercise.product_management_binary_file.controller;
 
-import ss17_binary_file.service.IProductService;
-import ss17_binary_file.service.impl.ProductService;
+import ss17_binary_file.exercise.product_management_binary_file.service.IProductService;
+import ss17_binary_file.exercise.product_management_binary_file.service.impl.ProductService;
 
 import java.util.Scanner;
 

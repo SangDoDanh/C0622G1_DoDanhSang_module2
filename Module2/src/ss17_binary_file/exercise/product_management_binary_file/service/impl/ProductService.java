@@ -1,7 +1,7 @@
-package ss17_binary_file.service.impl;
+package ss17_binary_file.exercise.product_management_binary_file.service.impl;
 
-import ss17_binary_file.model.Product;
-import ss17_binary_file.service.IProductService;
+import ss17_binary_file.exercise.product_management_binary_file.model.Product;
+import ss17_binary_file.exercise.product_management_binary_file.service.IProductService;
 
 import java.io.*;
 import java.util.ArrayList;

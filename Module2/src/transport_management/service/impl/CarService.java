@@ -61,6 +61,7 @@ public class CarService implements ICarService {
         int seats;
         String carStyle;
         MyUtil.inputInfo();
+
         System.out.println("Số chỗ ngồi");
         seats = Integer.parseInt(SC.nextLine());
         System.out.println("Kiểu xe");
