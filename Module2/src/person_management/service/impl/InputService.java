@@ -26,6 +26,35 @@ public class InputService {
         }
         return results;
     }
+    public static String getName(String mes) {
+        String regex = "\\w{5,50}";
+        String name;
+
+        while (true) {
+            System.out.print(mes);
+            name = sc.nextLine();
+            if(name.matches(regex)) {
+                return name;
+            } else {
+                System.out.println(name + "5-50 kí tự, không chứa kí tự đặc biệt,số!");
+            }
+        }
+    }
+    public static String getClassName(String mes) {
+        //A|CXXXXG|I1
+        String regex = "[AC]\\d{4}[GI]1";
+        String className;
+
+        while (true) {
+            System.out.print(mes);
+            className = sc.nextLine();
+            if(className.matches(regex)) {
+                return className;
+            } else {
+                System.out.println(className + "Tên lớp phải đúng định dạng (A|C)XXXX(G|I)1 : với X là các số từ 0 -> 9!");
+            }
+        }
+    }
     public static String getDate(String mes) {
         String result = "";
         String regexDate = "\\d{1,2}[-|/]\\d{1,2}[-|/]\\d{4}";

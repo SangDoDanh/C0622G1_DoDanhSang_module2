@@ -204,10 +204,10 @@ public class StudentService implements IStudentService {
         String gender;
         System.out.println("Nhập vào các thông tin sau");
         id = getIdAndCheck();
-        name = InputService.getStr("Tên học sinh: ");
+        name = InputService.getName("Tên học sinh: ");
         dob = InputService.getDate("Ngày sinh dd/mm/yyyy:");
         gender = InputService.getStr("Giới tính: ");
-        className = InputService.getStr("Lớp");
+        className = InputService.getClassName("Lớp");
         return new Student(id, name, dob, gender, className, 0.0);
     }
 
