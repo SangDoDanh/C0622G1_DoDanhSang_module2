@@ -27,9 +27,8 @@ public class InputService {
         return results;
     }
     public static String getName(String mes) {
-        String regex = "\\w{5,50}";
+        String regex = "^[a-zA-Z\\s]{5,50}$";
         String name;
-
         while (true) {
             System.out.print(mes);
             name = sc.nextLine();
@@ -42,7 +41,7 @@ public class InputService {
     }
     public static String getClassName(String mes) {
         //A|CXXXXG|I1
-        String regex = "[AC]\\d{4}[GI]1";
+        String regex = "^[AC]\\d{4}[GI]1$";
         String className;
 
         while (true) {
